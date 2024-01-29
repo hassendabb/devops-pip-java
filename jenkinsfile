@@ -54,7 +54,7 @@ agent
             steps {
                 //using an environmental variable in the script. Note the use of "$" and "{}"
 
-                echo "Now Building the version ${NEW_BUILD_VERSION}"  
+                echo "Now Building the version ${NEW_BUILD_VERSION}"   
                 echo 'Now testing the new application...' 
             }
         }
