@@ -11,26 +11,26 @@ pipeline {
         
         //define the stages one by one. a pipelinbe can have as many as stages you want.
 
-        stage("build") { 
-            //When Expression : is used to execute steps based on some logic.
-            when {
-                expression {
-                    // execute below mentioned steps only when a Branch Name is 'dev' and if there was any code change in this branch 
+        // stage("build") { 
+        //     //When Expression : is used to execute steps based on some logic.
+        //     when {
+        //         expression {
+        //             // execute below mentioned steps only when a Branch Name is 'dev' and if there was any code change in this branch 
 
-                    BRANCH_NAME == 'DEVELOPMENT' || BRANCH_NAME == 'main' && CODE_CHANGES == true
+        //             BRANCH_NAME == 'DEVELOPMENT' || BRANCH_NAME == 'main' && CODE_CHANGES == true
 
-                }
-            }
+        //         }
+        //     }
 
 
-            //steps will have all the scripts needed for the deployment e.g. npm code
+        //     //steps will have all the scripts needed for the deployment e.g. npm code
 
-            steps { 
-                sh 'npm install'
-                sh 'npm build'
-                echo 'I am building my application.'
-            }
-        }
+        //     steps { 
+        //         sh 'npm install'
+        //         sh 'npm build'
+        //         echo 'I am building my application.'
+        //     }
+        // }
         stage("test") {
             steps {
                 //using an environmental variable in the script. Note the use of "$" and "{}"
