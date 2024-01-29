@@ -53,16 +53,4 @@ pipeline {
     //Post Expression : execute some logics after all of the stages are executed.
     //Can be used to email build results to the developers.
 
-    post {
-        
-        always {
-            // execute logics after execution, build status does not matter.
-        }
-        success {
-            // execute logics after execution, only after a SUCCESSFUL build. 
-        }
-        failure {
-            // execute logics after execution, only after a build FAILS. 
-        }
-    }
 } 
