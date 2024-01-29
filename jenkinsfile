@@ -3,8 +3,6 @@
 pipeline {
     
     // Agent Any means : this pipeline can be used for any Jenkins 
-
-agent
     agent any
 
 
