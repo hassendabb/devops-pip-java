@@ -1,0 +1,56 @@
+//start of the Jenkinsfile
+
+pipeline {
+    
+    // Agent Any means : this pipeline can be used for any Jenkins 
+    agent any
+
+
+    //Scripts to be used for every stages of a pipeline
+    stages {
+        
+        //define the stages one by one. a pipelinbe can have as many as stages you want.
+
+        // stage("build") { 
+        //     //When Expression : is used to execute steps based on some logic.
+        //     when {
+        //         expression {
+        //             // execute below mentioned steps only when a Branch Name is 'dev' and if there was any code change in this branch 
+
+        //             BRANCH_NAME == 'DEVELOPMENT' || BRANCH_NAME == 'main' && CODE_CHANGES == true
+
+        //         }
+        //     }
+
+
+        //     //steps will have all the scripts needed for the deployment e.g. npm code
+
+        //     steps { 
+        //         sh 'npm install'
+        //         sh 'npm build'
+        //         echo 'I am building my application.'
+        //     }
+        // }
+        stage("test") {
+            steps {
+                //using an environmental variable in the script. Note the use of "$" and "{}"
+
+                echo "Now Building the version"   
+                echo 'Now testing the new application...' 
+            }
+        }
+        stage("deploy") {
+            steps {
+                echo 'deplying the application...' 
+                echo "Now deploying the applicaiton version"
+                }
+            }
+
+
+    }
+
+
+    //Post Expression : execute some logics after all of the stages are executed.
+    //Can be used to email build results to the developers.
+
+} 
