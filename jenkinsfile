@@ -5,38 +5,25 @@ pipeline {
     // Agent Any means : this pipeline can be used for any Jenkins 
     agent any
 
+    tools {
+            // Define Maven tool with specific installation name and version
+            maven 
+        }
 
     //Scripts to be used for every stages of a pipeline
     stages {
         
         //define the stages one by one. a pipelinbe can have as many as stages you want.
-
-        // stage("build") { 
-        //     //When Expression : is used to execute steps based on some logic.
-        //     when {
-        //         expression {
-        //             // execute below mentioned steps only when a Branch Name is 'dev' and if there was any code change in this branch 
-
-        //             BRANCH_NAME == 'DEVELOPMENT' || BRANCH_NAME == 'main' && CODE_CHANGES == true
-
-        //         }
-        //     }
-
-
-        //     //steps will have all the scripts needed for the deployment e.g. npm code
-
-        //     steps { 
-        //         sh 'npm install'
-        //         sh 'npm build'
-        //         echo 'I am building my application.'
-        //     }
-        // }
-        stage("test") {
+        stage('Build') {
             steps {
-                //using an environmental variable in the script. Note the use of "$" and "{}"
-
-                echo "Now Building the version"   
-                echo 'Now testing the new application...' 
+                // Run Maven build
+                sh 'mvn clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                // Run Maven tests
+                sh 'mvn test'
             }
         }
         stage("deploy") {
