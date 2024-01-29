@@ -8,23 +8,6 @@ agent
     agent any
 
 
-    environemnt {
-
-        // environment attribute holds the environemnt variables which can be used in all the stages.
-
-        NEW_BUILD_VERSION = '1.2.345'
-    }
-
-
-    tools{
-        //Mention the tools to be used in your build. 
-        //Tools needs to pre-configured in Jenkins in "Global Tool Configuaraitons". 
-        //this is Not a mandatory attribute.
-
-        maven
-    }
-
-
     //Scripts to be used for every stages of a pipeline
     stages {
         
@@ -54,7 +37,7 @@ agent
             steps {
                 //using an environmental variable in the script. Note the use of "$" and "{}"
 
-                echo "Now Building the version ${NEW_BUILD_VERSION}"   
+                echo "Now Building the version"   
                 echo 'Now testing the new application...' 
             }
         }
