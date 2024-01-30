@@ -36,6 +36,12 @@ pipeline {
 
     }
 
+        post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+    }
+
 
     //Post Expression : execute some logics after all of the stages are executed.
     //Can be used to email build results to the developers.
