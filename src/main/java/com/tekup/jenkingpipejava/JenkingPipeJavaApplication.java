@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JenkingPipeJavaApplication {
 
 	public static void main(String[] args) {		
+		
 		SpringApplication.run(JenkingPipeJavaApplication.class, args);
 	}
 
