@@ -28,16 +28,15 @@ pipeline {
         }
         stage('send jar file') {
             steps {
-                sh 'scp -i /key2  /var/jenkins_home/workspace/devops-pipeline-project_main/target/jenking-pipe-java-0.0.1-SNAPSHOT.jar  ubuntu@ec2-44-204-174-183.compute-1.amazonaws.com:/'
+                sh 'scp -i /devops_project_key.pem  /var/jenkins_home/workspace/devops-pipeline-project_main/target/jenking-pipe-java-0.0.1-SNAPSHOT.jar  ubuntu@ec2-44-204-174-183.compute-1.amazonaws.com:/'
 
             }
         }
         stage("deploy") {
             steps {
                 echo "Now deploying the applicaiton version"
-                sh 'ssh -i /key2 ubuntu@ec2-44-204-174-183.compute-1.amazonaws.com'
-                sh 'java -jar your_jar_file.jar --port=8099' 
-                sh 'exit'
+                sh 'ssh -i /devops_project_key.pem ec2-user@ec2-54-211-22-52.compute-1.amazonaws.com'
+                sh 'nohup java -jar jenking-pipe-java-0.0.1-SNAPSHOT.jar --port=8099 &' 
                 }
             }
 
