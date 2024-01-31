@@ -26,6 +26,13 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage("clean env") {
+            steps {
+                echo "...cleaning enviroment"
+                sh 'ssh -i /devops_project_key.pem ec2-user@ec2-54-211-22-52.compute-1.amazonaws.com'
+                sh 'rm jenking-pipe-java-0.0.1-SNAPSHOT.jar' 
+                }
+            }
         stage('send jar file') {
             steps {
                 sh 'scp -i /devops_project_key.pem /var/jenkins_home/workspace/devops-pipeline-project_main/target/jenking-pipe-java-0.0.1-SNAPSHOT.jar ec2-user@ec2-54-211-22-52.compute-1.amazonaws.com:/home/ec2-user'
@@ -36,6 +43,7 @@ pipeline {
             steps {
                 echo "Now deploying the applicaiton version"
                 sh 'ssh -i /devops_project_key.pem ec2-user@ec2-54-211-22-52.compute-1.amazonaws.com'
+                sh 'chmod 777 jenking-pipe-java-0.0.1-SNAPSHOT.jar' 
                 sh 'nohup java -jar jenking-pipe-java-0.0.1-SNAPSHOT.jar --port=8099 &' 
                 }
             }
