@@ -40,7 +40,7 @@ pipeline {
         stage("deploy") {
             steps {
                 echo "Now deploying the applicaiton version"
-                sh 'ssh -i /devops_project_key.pem ec2-user@ec2-54-211-22-52.compute-1.amazonaws.com "sudo chmod 777 jenking-pipe-java-0.0.1-SNAPSHOT.jar"; "sudo nohup java -jar jenking-pipe-java-0.0.1-SNAPSHOT.jar --port=8099 &"'
+                sh 'ssh -i /devops_project_key.pem ec2-user@ec2-54-211-22-52.compute-1.amazonaws.com "sudo chmod 777 jenking-pipe-java-0.0.1-SNAPSHOT.jar" "sudo nohup java -jar jenking-pipe-java-0.0.1-SNAPSHOT.jar --port=8099 &"'
                 }
             }
 
