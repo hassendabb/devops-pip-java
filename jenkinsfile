@@ -34,7 +34,8 @@ pipeline {
             }
         stage('send jar file') {
             steps {
-                sh 'scp -i /devops_project_key.pem /var/jenkins_home/workspace/devops-pipeline-project_main/target/jenking-pipe-java-0.0.1-SNAPSHOT.jar ec2-user@ec2-54-211-22-52.compute-1.amazonaws.com:/home/ec2-user'
+                sh 'scp -i /devops_project_key.pem /var/jenkins_home/workspace/devops-pipeline-project_main/target/jenking-pipe-java-0.0.1-SNAPSHOT.jar ec2-user@ec2-54-211-22-52.compute-1.amazonaws.com:/home/ec2-user' 
+            }
         }
         stage("deploy") {
             steps {
